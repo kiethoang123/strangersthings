@@ -1,0 +1,25 @@
+ .Navbar{
+    display: flex;
+    justify-content:space-between;
+    background-color: rgb(121, 121, 228);
+    align-items: center;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 20px;
+    } 
+
+ h1{
+     display: flex;
+    margin-right: auto;
+    }
+
+
+p{
+    margin: 20px;
+    text-decoration: none;
+}
+
+
+
+
+

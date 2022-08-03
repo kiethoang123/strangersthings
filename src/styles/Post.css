@@ -1,0 +1,36 @@
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2{
+    text-decoration: underline;
+    font-size: 35px;
+    color:rgb(121, 121, 228) ;
+}
+
+.user{
+    display: flex;
+    justify-content: center;
+}
+
+.description{
+    display: flex;
+    justify-content: center;
+} 
+
+.location{
+    display: flex;
+    justify-content: center;
+}
+
+.updated{
+    display: flex;
+    justify-content: center;
+}
+
+.price{
+    display: flex;
+    justify-content: center;
+}
