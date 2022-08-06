@@ -2,8 +2,15 @@ export const base_url = 'https://strangers-things.herokuapp.com/api/2204-ftb-et-
 
 
 export async function fetchALLPosts() {
+   const token=localStorage.getItem('token')
+
  try {
-    const resp = await fetch(`${base_url}/posts`);
+    const resp = await fetch(`${base_url}/posts`,{
+    headers:{'Content-Type': 'application/json',
+               'Authorization': `Bearer ${token}`
+
+    }
+   });
     const data = await resp.json();
 
     return data;
@@ -74,4 +81,17 @@ localStorage.setItem('token',data.data.token)
    
 
 
-    
+    export const deletePost= async (id) => {
+      const token=localStorage.getItem('token')
+      const response = await fetch(`https://strangers-things.herokuapp.com/api/2204-ftb-et-web-pt/posts/${id}`, {
+         method: "DELETE",
+         headers: {
+           'Content-Type': 'application/json',
+           'Authorization': `Bearer ${token}`
+         }
+       }).then(response => response.json())
+         .then(result => {
+           console.log(result);
+         })
+         .catch(console.error);
+    }

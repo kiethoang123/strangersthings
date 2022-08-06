@@ -1,8 +1,8 @@
 import '../styles/Post.css';
-import { fetchALLPosts } from '../api';
+import { deletePost, fetchALLPosts } from '../api';
 import { useEffect, useState } from 'react';
 import Create from './Create';
-import Delete from './Delete';
+
 
 const Post = () =>{
     const [posts, setPosts] = useState ([]);
@@ -17,7 +17,11 @@ const Post = () =>{
     }, []);
 
     const handleDelete = async(postIdToDelete) =>{
-        console.log('PostIdToDelete:', postIdToDelete);}
+        const data=await deletePost(postIdToDelete);
+        const remainingPost = posts.filter(post=>post._id !== postIdToDelete)
+        setPosts(remainingPost)
+    }
+        
 
     return (<div className="post">
         <h1>Posts</h1>
@@ -33,8 +37,8 @@ const Post = () =>{
                     <aside className='location'>Location: {post.location}</aside>
                     <aside className='price'>Price: {post.price}</aside>
                     <p className='updated'>Last Updated: {post.updatedAt}</p>
-                    {/* <button type='button' className='btn'
-                    onClick={()=> handleDelete(post.id)}>delete</button> */}
+                    {post.isAuthor?<button type='button' className='btn'
+                    onClick={()=> handleDelete(post._id)}>delete</button>:null}
               </div>
             );
         })
